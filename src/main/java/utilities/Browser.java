@@ -20,33 +20,44 @@ public class Browser {
 	// private static String BrowserVersion =
 	// PropertyLoader.loadProperty("browser.version");
 	public static WebDriver driver;
+	
 
 	public static void Initialize() throws MalformedURLException {
-		 driver = WebDriverFactory.getInstance(BrowserName);
-		 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		 driver.manage().window().maximize();
-		 if (System.getProperty("BROWSER") != null && System.getProperty("BROWSER").equals("firefox")) {
-			 driver = WebDriverFactory.getInstance("firefox");
-		 }
+		String host=null;
+		if (System.getProperty("HOST") == null) {
+			driver = WebDriverFactory.getInstance(BrowserName);
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.manage().window().maximize();
+			if (System.getProperty("BROWSER") != null && System.getProperty("BROWSER").equals("firefox")) {
+				driver = WebDriverFactory.getInstance("firefox");
+			}
+		}
 
 		// http://35.246.142.197:4444/grid/console
 		// goTo(baseUrl);
 
 		// To work with Grid:
-//		DesiredCapabilities dc = DesiredCapabilities.chrome();
-//		String host = "localhost";
-//		if (System.getProperty("Browser") != null && System.getProperty("Browser").equals("firefox")) {
-//			dc = DesiredCapabilities.firefox();
-//
-//			if (System.getProperty("HUB_HOST") != null) {
-//				host = System.getProperty("HUB_HOST");
-//
-//			}
-//
-//		}
+		else {
+		
+			if (System.getProperty("HUB_HOST") != null) {
+				 
+				host =System.getProperty("HUB_HOST");
+				
+			}else{
+				host = "localhost";		
+	
+			    }
+			DesiredCapabilities dc = DesiredCapabilities.chrome();
 
+			if (System.getProperty("Browser") != null && System.getProperty("Browser").equals("firefox")) {
+				dc = DesiredCapabilities.firefox();
+
+			}
+			driver = new RemoteWebDriver(new URL("http://"+host+ ":4445"+"/wd/hub/"), dc);
+
+		}
 	}
-
+	  
 	public static String getTitle() {
 		return driver.getTitle();
 	}
@@ -59,3 +70,4 @@ public class Browser {
 		driver.close();
 	}
 }
+
