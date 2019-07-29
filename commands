@@ -1,0 +1,2 @@
+mvn clean package -DHOST=grid -DHUB_HOST=35.246.172.27
+
