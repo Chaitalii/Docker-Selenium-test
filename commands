@@ -1,0 +1,5 @@
+mvn clean package -DHOST=grid -DHUB_HOST=35.246.172.27
+to run:
+docker run -it -e HOST=grid -e HUB_HOST=35.246.172.27 chaitali2019/tourradar:v2
+-e is to specify the environment variable
+
