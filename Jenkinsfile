@@ -24,7 +24,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                	app =sudo  docker.build("chaitali2019/tourradar")
+                	app =sudo  docker.build("chaitali2019/tourradar_$BUILD_NUMBER")
                 }
             }
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
 			        docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-			        	sudo app.push("${BUILD_NUMBER}")
+			            app.push("${BUILD_NUMBER}")
 			            app.push("latest")
 			        }
                 }
