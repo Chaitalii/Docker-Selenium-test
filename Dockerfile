@@ -8,3 +8,4 @@ ADD target/libs libs
 ADD src/test/resources/testng.xml testng.xml
 ADD healthcheck.sh healthcheck.sh
 ENTRYPOINT sh healthcheck.sh
+#ENTRYPOINT java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/*  -DHOST=$HOST -DHUB_HOST=$HUB_HOST org.testng.TestNG testng.xml

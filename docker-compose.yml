@@ -1,0 +1,19 @@
+version: "3"
+services:
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome
+    depends_on:
+      - hub
+    environment:
+      - HUB_HOST=hub
+#  login-module:
+ #   image: chaitali2019/tourradar:v2
+  #  depends_on:
+   #    - chrome
+    #environment:
+      # - HOST=grid
+     #  - HUB_HOST=hub

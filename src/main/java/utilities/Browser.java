@@ -53,7 +53,7 @@ public class Browser {
 				dc = DesiredCapabilities.firefox();
 
 			}
-			driver = new RemoteWebDriver(new URL("http://"+host+ ":4445"+"/wd/hub/"), dc);
+			driver = new RemoteWebDriver(new URL("http://"+host+ ":4444"+"/wd/hub/"), dc);
 
 		}
 	}
