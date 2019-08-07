@@ -6,7 +6,7 @@ pipeline {
             agent any
 
             steps {
-                sh "sudo chown root:jenkins /run/docker.sock"
+                sh "sudo chmod 777 /var/lib/jenkins/.docker/config.json"
             }
 
         }
@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
 			        docker.withRegistry('https://registry.hub.docker.com', 'docker') {
-			        	sudo app.push("${BUILD_NUMBER}")
+			          app.push("${BUILD_NUMBER}")
 			            app.push("latest")
 			        }
                 }
