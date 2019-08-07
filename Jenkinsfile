@@ -24,7 +24,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                	app =docker.build("chaitali2019/tourradar_$BUILD_NUMBER")
+                	app =docker.build("chaitali2019/tourradar:$BUILD_NUMBER")
                 }
             }
         }
