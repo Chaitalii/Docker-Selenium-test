@@ -6,9 +6,9 @@
 		    <class name="pages.HomePageTest"/>
 		</classes>
 	</test> 
-		<test name="Test2">
+	<!--	<test name="Test2">
 		<classes>
 		    <class name="pages.LoginPageTest"/>
 		</classes>
-	</test>  
+	</test>  -->
 </suite>
